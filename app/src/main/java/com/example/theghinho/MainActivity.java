@@ -20,6 +20,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_main);
         bindingView();
         bindingAction();
@@ -60,6 +61,9 @@ public class MainActivity extends AppCompatActivity {
         btnL = findViewById(R.id.btnLoad);
         edtName = findViewById(R.id.edtName);
         db = new TheGhiNhoOpenHelper(this);
+
+
+        setContentView(R.layout.forgotpassword);
 
     }
 }

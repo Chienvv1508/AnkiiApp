@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+
     <EditText
         android:id="@+id/edtName"
         android:layout_width="wrap_content"
@@ -14,9 +15,11 @@
         android:ems="10"
         android:inputType="text"
         android:text="Name"
+
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
 
     <Button
         android:id="@+id/btnSave"
@@ -38,5 +41,6 @@
         android:text="Load"
         app:layout_constraintStart_toEndOf="@+id/btnSave"
         app:layout_constraintTop_toTopOf="@+id/btnSave" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

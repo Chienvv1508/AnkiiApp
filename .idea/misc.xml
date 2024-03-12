@@ -6,7 +6,10 @@
   <component name="ProjectType">
     <option name="id" value="Android" />
   </component>
+<<<<<<< HEAD
+=======
   <component name="SuppressKotlinCodeStyleNotification">
     <option name="disableForAll" value="true" />
   </component>
+>>>>>>> 2a72e4837399604b934bc57357f94d0bf2b2b860
 </project>

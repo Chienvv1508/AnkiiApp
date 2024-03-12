@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="txtViewStyle">
+
+        <item name="android:textColor">#C51919</item>
+        <item name="android:textSize">50sp</item>
+
+
+    </style>
+
+    <style name="sizeOfTitle">
+        <item name="android:textSize">
+            40sp
+        </item>
+        <item name="android:textColor">
+            #FF00668B
+        </item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="label">
+        <item name="android:textSize">
+            25sp
+        </item>
+
+        <item name="android:textStyle">bold</item>
+    </style>
+
+</resources>

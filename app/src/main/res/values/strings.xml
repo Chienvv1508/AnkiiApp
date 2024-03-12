@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">TheGhiNho</string>
+    <string name="register">ĐăngKý</string>
+    <string name="username">TàiKhoản:</string>
+    <string name="password">MậtKhẩu:</string>
+    <string name="lastName">Họ:</string>
+    <string name="firstName">Tên:</string>
 </resources>

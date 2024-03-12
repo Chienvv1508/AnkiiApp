@@ -8,7 +8,11 @@ android {
 
     defaultConfig {
         applicationId = "com.example.theghinho"
+<<<<<<< HEAD
         minSdk = 27
+=======
+        minSdk = 26
+>>>>>>> 2a72e4837399604b934bc57357f94d0bf2b2b860
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"

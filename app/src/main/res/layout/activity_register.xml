@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Register">
+
+    <EditText
+
+        android:id="@+id/editText2"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:hint="ten"
+        android:layout_marginTop="5dp"
+        android:width="150sp"
+
+        android:inputType="textPassword"
+        android:padding="8dp"
+        app:layout_constraintStart_toStartOf="@+id/lbFirstName"
+        app:layout_constraintTop_toBottomOf="@+id/lbFirstName"/>
+
+    <EditText
+
+        android:id="@+id/editText"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="5dp"
+        android:width="150sp"
+        android:hint="cf"
+        android:inputType="textPassword"
+        android:padding="8dp"
+        app:layout_constraintStart_toStartOf="@+id/lbConfirmPass"
+        app:layout_constraintTop_toBottomOf="@+id/lbConfirmPass"/>
+
+    <TextView
+        android:id="@+id/txtPageTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginTop="80dp"
+        android:text="@string/register"
+        android:textColor="#00668B"
+        android:textSize="40sp"
+        android:textStyle="bold"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintLeft_toLeftOf="parent"
+
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+    <TextView
+        android:id="@+id/lbUserName"
+        android:text="@string/username"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        style="@style/label"
+        app:layout_constraintTop_toBottomOf="@+id/txtPageTitle"
+        android:layout_marginTop="40dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginLeft="20dp"
+        />
+    <TextView
+        android:id="@+id/lbPassword"
+        android:text="@string/password"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        style="@style/label"
+        app:layout_constraintTop_toBottomOf="@+id/lbUserName"
+        android:layout_marginTop="50dp"
+        app:layout_constraintLeft_toLeftOf="@+id/lbUserName"
+
+        />
+
+    <TextView
+        android:id="@+id/lbConfirmPass"
+        style="@style/label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:text="Confirmpass"
+        app:layout_constraintLeft_toLeftOf="@+id/lbUserName"
+        app:layout_constraintTop_toBottomOf="@+id/lbPassword"
+
+        />
+
+    <TextView
+        android:id="@+id/lbLastName"
+        style="@style/label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:text="@string/lastName"
+        app:layout_constraintLeft_toLeftOf="@+id/lbUserName"
+        app:layout_constraintTop_toBottomOf="@+id/lbConfirmPass"
+
+        />
+
+    <TextView
+        android:id="@+id/lbFirstName"
+        style="@style/label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:text="@string/firstName"
+        app:layout_constraintLeft_toLeftOf="@+id/lbUserName"
+        app:layout_constraintTop_toBottomOf="@+id/lbLastName"
+
+        />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="40dp"
+        android:layout_marginTop="40dp"
+        android:text="@string/register"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editText2"/>
+
+    <EditText
+        android:id="@+id/edtUserName"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:hint="tk"
+        android:layout_marginTop="5dp"
+        android:width="150sp"
+        app:layout_constraintLeft_toLeftOf="@+id/lbUserName"
+        app:layout_constraintTop_toBottomOf="@+id/lbUserName"
+
+        android:padding="8dp"
+
+
+        />
+
+    <EditText
+        android:id="@+id/edtPass"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="5dp"
+        android:width="150sp"
+        android:hint="mk"
+        android:inputType="textPassword"
+        android:padding="8dp"
+        app:layout_constraintStart_toStartOf="@+id/lbPassword"
+        app:layout_constraintTop_toBottomOf="@+id/lbPassword"/>
+
+    <EditText
+
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="5dp"
+        android:width="150sp"
+        android:hint="ho"
+        android:inputType="textPassword"
+        android:padding="8dp"
+        app:layout_constraintStart_toStartOf="@+id/lbLastName"
+        app:layout_constraintTop_toBottomOf="@+id/lbLastName"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

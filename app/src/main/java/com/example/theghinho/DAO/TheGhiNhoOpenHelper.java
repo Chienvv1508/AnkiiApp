@@ -6,6 +6,10 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
+import com.example.theghinho.Models.Card;
+
+import java.util.ArrayList;
+
 public class TheGhiNhoOpenHelper extends SQLiteOpenHelper {
 
 
@@ -96,5 +100,21 @@ public class TheGhiNhoOpenHelper extends SQLiteOpenHelper {
     public Cursor getAllRoles(){
         String sql = "Select * from Role";
        return getReadableDatabase().rawQuery(sql,new String[]{});
+    }
+    public ArrayList<Card> getAllCards(){
+        ArrayList<Card> cards = new ArrayList<>();
+        SQLiteDatabase db = getReadableDatabase();
+        Cursor cursor = db.rawQuery("Select CardId, FontCard ,BackCard from Card", null);
+        cursor.moveToFirst();
+        while (!cursor.isAfterLast()){
+            int cardId = cursor.getInt(0);
+            String fontCard = cursor.getString(1);
+            String backCard = cursor.getString(2);
+            cards.add(new Card(cardId, fontCard, backCard));
+            cursor.moveToNext();
+
+        }
+        cursor.close();
+        return cards;
     }
 }

@@ -52,6 +52,9 @@ public class Test_0 extends AppCompatActivity {
             mylist.add("câu hỏi : " + cauhoii+ "; đáp án "+ "a1");
             myadapter.notifyDataSetChanged();
 
+            int a =0;
+
+            String b;
         }
     });
     }

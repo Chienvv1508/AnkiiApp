@@ -62,5 +62,8 @@ public class MainActivity extends AppCompatActivity {
         edtName = findViewById(R.id.edtName);
         db = new TheGhiNhoOpenHelper(this);
 
+
+        setContentView(R.layout.forgotpassword);
+
     }
 }

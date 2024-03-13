@@ -2,7 +2,6 @@ package com.example.theghinho;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-
 import android.annotation.SuppressLint;
 import android.database.Cursor;
 import android.os.Bundle;
@@ -62,10 +61,6 @@ public class MainActivity extends AppCompatActivity {
         btnL = findViewById(R.id.btnLoad);
         edtName = findViewById(R.id.edtName);
         db = new TheGhiNhoOpenHelper(this);
-
-
-
-
 
     }
 }

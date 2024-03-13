@@ -12,22 +12,15 @@ public class ProfileEdit extends AppCompatActivity {
 
     private EditText edtFName;
     private EditText edtLName;
-    private RadioGroup rdgGender;
-    private RadioButton radioMale;
-    private RadioButton radioFemale;
-    private EditText edtPhone;
+    private EditText edtUserName;
     private EditText edtEmail;
-    private EditText edtAddress;
     private Button btnSave;
     private void BindingView(){
         edtFName.findViewById(R.id.edtFName);
         edtLName.findViewById(R.id.edtLName);
-        rdgGender.findViewById(R.id.rdgGender);
-        radioMale.findViewById(R.id.radioMale);
-        radioFemale.findViewById(R.id.radioFemale);
-        edtPhone.findViewById(R.id.edtPhone);
         edtEmail.findViewById(R.id.edtEmail);
-        edtAddress.findViewById(R.id.edtAddress);
+        edtUserName.findViewById(R.id.edtUserName);
+        btnSave.findViewById(R.id.btnSave);
     }
     private void BindingAction(){
 

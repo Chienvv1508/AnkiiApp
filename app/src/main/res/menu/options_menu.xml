@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/opBoThe"
+
+        android:title="Các Bộ Thẻ"
+        />
+    <item
+        android:id="@+id/opDuyetThe"
+
+        android:title="Duyệt Thẻ" />
+    <item
+        android:id="@+id/opThongKe"
+        android:title="Thống Kê" />
+    <item
+        android:id="@+id/opDangXuat"
+        android:title="Đăng Xuất" />
+</menu>

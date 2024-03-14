@@ -97,4 +97,25 @@ public class TheGhiNhoOpenHelper extends SQLiteOpenHelper {
         String sql = "Select * from Role";
        return getReadableDatabase().rawQuery(sql,new String[]{});
     }
+
+    public Boolean checkUserName(String username){
+        SQLiteDatabase MyDB = this.getWritableDatabase();
+        Cursor cursor = MyDB.rawQuery("Select * from User where Username = ?", new String[]{username});
+        if(cursor.getCount() > 0){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    public Boolean checkUsernamePassword(String username, String password){
+        SQLiteDatabase MyDB = this.getWritableDatabase();
+        Cursor cursor = MyDB.rawQuery("Select * from User where Username = ? and Password = ?", new String[]{username, password});
+        if(cursor.getCount() > 0){
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
 }

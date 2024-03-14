@@ -63,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
         db = new TheGhiNhoOpenHelper(this);
 
 
-        setContentView(R.layout.forgotpassword);
+
 
     }
 }

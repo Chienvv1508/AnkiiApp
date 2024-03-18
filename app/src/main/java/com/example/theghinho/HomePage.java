@@ -28,9 +28,10 @@ import java.util.List;
 public class HomePage extends AppCompatActivity {
     Button btnThemHome;
     private RecyclerView rcv;
+    private String userName;
 
     List<Folder> folderList;
-    String userName;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,7 +44,12 @@ public class HomePage extends AppCompatActivity {
 
     private void getFolders() {
         FolderDAO folderDAO = new FolderDAO(this);
-       folderList = folderDAO.getAllFolderById(userName);
+
+        Intent it = getIntent();
+        String user = it.getStringExtra("user");
+        userName = user;
+        folderList = folderDAO.getAllFolderById(user);
+
     }
 
     private void initListWordView() {
@@ -92,6 +98,7 @@ public class HomePage extends AppCompatActivity {
         }else {
 
             Intent it = new Intent(HomePage.this, AddFolder.class);
+            it.putExtra("userName",userName);
             startActivity(it);
             Toast.makeText(this, "Thêm Bộ Thẻ", Toast.LENGTH_SHORT).show();
         }

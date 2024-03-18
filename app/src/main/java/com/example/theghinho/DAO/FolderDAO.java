@@ -45,10 +45,10 @@ public class FolderDAO {
         }
        return  folders;
     }
-    public long insertFolder(Folder folder) {
+    public long insertFolder(Folder folder, String user) {
         ContentValues values = new ContentValues();
         values.put("FolderName",folder.getFolderName());
-        values.put("UserId",1);
+        values.put("UserName", user);
 
         return dbContext.getWritableDatabase().insert("Folder", null, values);
 

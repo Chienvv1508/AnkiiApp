@@ -5,41 +5,31 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="10dp"
-    tools:context=".LoginActivity">
+    android:padding="20dp"
+    tools:context=".ForgotPassActivity">
 
+    <TextView
+        android:id="@+id/text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Enter your username"
+        android:textSize="20dp"
+        android:layout_marginTop="50dp"/>
     <EditText
-        android:id="@+id/edtUserName1"
+        android:id="@+id/edtUsername_reset"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="User Name"
-        android:layout_marginTop="50dp"/>
-
-    <EditText
-        android:id="@+id/edtPassword1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Password"
-        android:layout_marginTop="50dp"
-        android:layout_below="@+id/edtUserName1"/>
-    <Button
-        android:id="@+id/btnLogin1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Login"
-        android:layout_marginTop="50dp"
-        android:layout_below="@+id/edtPassword1"/>
-
-    <TextView
-        android:id="@+id/tvForgotPassword"
-        android:layout_width="160dp"
-        android:layout_height="wrap_content"
-        android:text="Forgot Password"
+        android:layout_below="@+id/text"
         android:textSize="20dp"
+        android:layout_marginTop="50dp"/>
+    <Button
+        android:id="@+id/btnreset"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Reset Password"
+        android:textSize="20dp"
+        android:layout_below="@+id/edtUsername_reset"
         android:layout_marginTop="50dp"
-        android:layout_below="@id/btnLogin1"
-        android:layout_marginLeft="115dp"
         />
-
-
 </RelativeLayout>

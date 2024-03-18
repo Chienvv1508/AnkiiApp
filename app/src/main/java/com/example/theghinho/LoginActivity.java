@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -20,6 +21,7 @@ public class LoginActivity extends AppCompatActivity {
     EditText username;
     EditText password;
     Button btnLogin;
+    TextView forgotPass;
     TheGhiNhoOpenHelper DB;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +32,7 @@ public class LoginActivity extends AppCompatActivity {
         password = (EditText) findViewById(R.id.edtPassword1);
         btnLogin = (Button) findViewById(R.id.btnLogin1);
         DB = new TheGhiNhoOpenHelper(this);
+        forgotPass = (TextView) findViewById(R.id.tvForgotPassword);
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -50,6 +53,14 @@ public class LoginActivity extends AppCompatActivity {
                         Toast.makeText(LoginActivity.this, "Invalid Username or Password", Toast.LENGTH_SHORT).show();
                     }
                 }
+            }
+        });
+
+        forgotPass.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), ForgotPassActivity.class);
+                startActivity(intent);
             }
         });
 

@@ -47,7 +47,7 @@ public class TheGhiNhoOpenHelper extends SQLiteOpenHelper {
             "\tDateLearn text not null,\n" +
             "\tInterval integer not null,\n" +
             "\tRepeatTime integer not null,\n" +
-            "\tEF integer not null,\n" +
+            "\tEF real not null,\n" +
             "\tIsLearned integer not null,\n" +
             "\tFolderId intefer not null,\n" +
             "\tFOREIGN KEY (CardId) REFERENCES Card(CardId),\n" +
@@ -69,7 +69,7 @@ public class TheGhiNhoOpenHelper extends SQLiteOpenHelper {
             "  CheckedOp text not null,\n" +
             "  TestId integer not null,\n" +
             " FOREIGN KEY (TestId) REFERENCES Test(TestId));\n";
-    private static final String InsertRole = "Insert into Role (RoleName) values (Learner)";
+    private static final String InsertRole = "Insert into Role (RoleName) values (?)";
     public TheGhiNhoOpenHelper(Context context) {
         super(context, DATABASE_NAME, null, 1);
     }
@@ -82,7 +82,7 @@ public class TheGhiNhoOpenHelper extends SQLiteOpenHelper {
         db.execSQL(CREATE_LEARNING_LOG);
         db.execSQL(CREATE_TEST);
         db.execSQL(CREATE_TEST_DETAIL);
-        db.execSQL(InsertRole);
+        db.execSQL(InsertRole,new Object[]{"Learner"});
 
     }
 

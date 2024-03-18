@@ -13,6 +13,12 @@
         android:id="@+id/opThongKe"
         android:title="Thống Kê" />
     <item
+        android:id="@+id/opThongTin"
+        android:title="Sửa Thông Tin" />
+    <item
+        android:id="@+id/opDoiMatKhau"
+        android:title="Đổi Mật Khẩu" />
+    <item
         android:id="@+id/opDangXuat"
         android:title="Đăng Xuất" />
 </menu>

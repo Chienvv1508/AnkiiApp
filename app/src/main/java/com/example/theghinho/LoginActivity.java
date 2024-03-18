@@ -21,7 +21,7 @@ public class LoginActivity extends AppCompatActivity {
     EditText username;
     EditText password;
     Button btnLogin;
-    TextView forgotPass;
+    TextView tvSignUp;
     TheGhiNhoOpenHelper DB;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +32,7 @@ public class LoginActivity extends AppCompatActivity {
         password = (EditText) findViewById(R.id.edtPassword1);
         btnLogin = (Button) findViewById(R.id.btnLogin1);
         DB = new TheGhiNhoOpenHelper(this);
-        forgotPass = (TextView) findViewById(R.id.tvForgotPassword);
+        tvSignUp = (TextView) findViewById(R.id.tvSignUp);
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -56,10 +56,10 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-        forgotPass.setOnClickListener(new View.OnClickListener() {
+        tvSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), ForgotPassActivity.class);
+                Intent intent = new Intent(getApplicationContext(), Register.class);
                 startActivity(intent);
             }
         });

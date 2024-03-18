@@ -29,12 +29,21 @@ public class AddFolder extends AppCompatActivity {
     }
 
     private void bindingAction() {
+
         btnAdd.setOnClickListener(this:: BtnAddFolderOnClick);
+        btnCancel.setOnClickListener(this:: BtnCancelOnClick);
+    }
+
+    private void BtnCancelOnClick(View view) {
+        Intent intent = new Intent(getApplicationContext(), HomePage.class);
+        startActivity(intent);
     }
 
     private void BtnAddFolderOnClick(View view) {
         Intent it = getIntent();
         String userName = it.getStringExtra("userName");
+        Intent intent = new Intent(getApplicationContext(), HomePage.class);
+        startActivity(intent);
         Folder fol = new Folder();
         String folName = edtFolName.getText().toString();
         fol.setFolderName(folName);

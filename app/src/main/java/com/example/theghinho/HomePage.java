@@ -22,6 +22,7 @@ import com.example.theghinho.Adapter.FolderListAdapter;
 import com.example.theghinho.DAO.FolderDAO;
 import com.example.theghinho.Model.Folder;
 
+import java.io.Serializable;
 import java.util.List;
 
 public class HomePage extends AppCompatActivity {
@@ -41,7 +42,7 @@ public class HomePage extends AppCompatActivity {
 
     private void getFolders() {
         FolderDAO folderDAO = new FolderDAO(this);
-        folderList = folderDAO.getAllFolderById(1);
+    //    folderList = folderDAO.getAllFolderById(1);
     }
 
     private void initListWordView() {
@@ -70,8 +71,22 @@ public class HomePage extends AppCompatActivity {
     public boolean onContextItemSelected(@NonNull MenuItem item) {
         if(item.getItemId() == R.id.opThemThe){
 
+            if(folderList.size() == 0)
+                Toast.makeText(this, "Bạn chưa có bộ thẻ",Toast.LENGTH_LONG).show();
+            else {
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("folders", (Serializable) folderList);
+                Intent sendAddCard = new Intent(this,AddCardToFolder.class);
+                sendAddCard.putExtra("folderlist", bundle);
+                startActivity(sendAddCard);
+            }
+
+
+
+
 
             Toast.makeText(this, "Thêm Thẻ", Toast.LENGTH_SHORT).show();
+
         }else {
 
             Intent it = new Intent(HomePage.this, AddFolder.class);

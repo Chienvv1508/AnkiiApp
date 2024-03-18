@@ -1,11 +1,13 @@
 package com.example.theghinho.DAO;
 
 import android.annotation.SuppressLint;
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import com.example.theghinho.Model.Folder;
+import com.example.theghinho.Model.User;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -42,5 +44,13 @@ public class FolderDAO {
             while(c.moveToNext());
         }
        return  folders;
+    }
+    public long insertFolder(Folder folder) {
+        ContentValues values = new ContentValues();
+        values.put("FolderName",folder.getFolderName());
+        values.put("UserId",1);
+
+        return dbContext.getWritableDatabase().insert("Folder", null, values);
+
     }
 }

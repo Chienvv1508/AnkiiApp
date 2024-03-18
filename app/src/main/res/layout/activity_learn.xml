@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Learn">
+
+    <TextView
+        android:id="@+id/txtFontLearn"
+        android:layout_width="341dp"
+        android:layout_height="207dp"
+        android:text="TextView"
+        tools:layout_editor_absoluteX="35dp"
+        tools:layout_editor_absoluteY="37dp" />
+
+    <TextView
+        android:id="@+id/txtBackLearn"
+        android:layout_width="332dp"
+        android:layout_height="178dp"
+        android:layout_marginTop="50dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="@+id/txtFontLearn"
+        app:layout_constraintStart_toStartOf="@+id/txtFontLearn"
+        app:layout_constraintTop_toBottomOf="@+id/txtFontLearn" />
+
+    <Button
+        android:id="@+id/btnShowDA"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:text="Xem Đáp Án"
+        app:layout_constraintEnd_toEndOf="@+id/txtBackLearn"
+        app:layout_constraintStart_toStartOf="@+id/txtBackLearn"
+        app:layout_constraintTop_toBottomOf="@+id/txtBackLearn" />
+
+    <Button
+        android:id="@+id/btnKho"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="-36dp"
+        android:layout_marginTop="60dp"
+        android:text="Khó"
+        app:layout_constraintStart_toStartOf="@+id/txtBackLearn"
+        app:layout_constraintTop_toBottomOf="@+id/btnShowDA" />
+
+    <Button
+        android:id="@+id/btnMoHo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:text="Mơ Hồ"
+        app:layout_constraintStart_toEndOf="@+id/btnKho"
+        app:layout_constraintTop_toTopOf="@+id/btnKho" />
+
+    <Button
+        android:id="@+id/btnVua"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:text="Vừa"
+        app:layout_constraintStart_toEndOf="@+id/btnMoHo"
+        app:layout_constraintTop_toTopOf="@+id/btnMoHo" />
+
+    <Button
+        android:id="@+id/btnDe"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:text="Dễ"
+        app:layout_constraintStart_toEndOf="@+id/btnVua"
+        app:layout_constraintTop_toTopOf="@+id/btnVua" />
+</androidx.constraintlayout.widget.ConstraintLayout>

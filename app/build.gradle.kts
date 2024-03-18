@@ -9,7 +9,6 @@ android {
     defaultConfig {
         applicationId = "com.example.theghinho"
 
-        minSdk = 27
 
         minSdk = 26
         targetSdk = 34

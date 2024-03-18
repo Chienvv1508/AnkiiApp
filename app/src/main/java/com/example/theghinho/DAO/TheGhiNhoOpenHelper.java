@@ -6,6 +6,10 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
+import com.example.theghinho.Models.Card;
+
+import java.util.ArrayList;
+
 public class TheGhiNhoOpenHelper extends SQLiteOpenHelper {
 
 
@@ -14,10 +18,8 @@ public class TheGhiNhoOpenHelper extends SQLiteOpenHelper {
 
     // Câu lệnh khởi tạo Database.
     private static final String CREATE_User = "create table "
-            + "User" + "( " + "Id"
-            + " integer primary key autoincrement, " + "UserId"
-            + " text not null," +" FName text not null," + "LName text not null,"
-            + "Email text not null," + "UserName text not null,"+ "Password text not null," +
+            + "User" + "(" + "UserName text primary key," + " FName text not null," + "LName text not null,"
+            + "Email text ," + "Password text not null," +
             "RoleId integer not null," + "FOREIGN KEY(RoleId) REFERENCES Role(RoleId)" + ");"
             ;
     private static final String CREATE_ROLE = "Create table Role (\n" +
@@ -45,7 +47,7 @@ public class TheGhiNhoOpenHelper extends SQLiteOpenHelper {
             "\tDateLearn text not null,\n" +
             "\tInterval integer not null,\n" +
             "\tRepeatTime integer not null,\n" +
-            "\tEF integer not null,\n" +
+            "\tEF real not null,\n" +
             "\tIsLearned integer not null,\n" +
             "\tFolderId intefer not null,\n" +
             "\tFOREIGN KEY (CardId) REFERENCES Card(CardId),\n" +
@@ -67,6 +69,7 @@ public class TheGhiNhoOpenHelper extends SQLiteOpenHelper {
             "  CheckedOp text not null,\n" +
             "  TestId integer not null,\n" +
             " FOREIGN KEY (TestId) REFERENCES Test(TestId));\n";
+    private static final String InsertRole = "Insert into Role (RoleName) values (?)";
     public TheGhiNhoOpenHelper(Context context) {
         super(context, DATABASE_NAME, null, 1);
     }
@@ -79,6 +82,7 @@ public class TheGhiNhoOpenHelper extends SQLiteOpenHelper {
         db.execSQL(CREATE_LEARNING_LOG);
         db.execSQL(CREATE_TEST);
         db.execSQL(CREATE_TEST_DETAIL);
+        db.execSQL(InsertRole,new Object[]{"Learner"});
 
     }
 
@@ -96,5 +100,44 @@ public class TheGhiNhoOpenHelper extends SQLiteOpenHelper {
     public Cursor getAllRoles(){
         String sql = "Select * from Role";
        return getReadableDatabase().rawQuery(sql,new String[]{});
+    }
+
+
+    public Boolean checkUserName(String username){
+        SQLiteDatabase MyDB = this.getWritableDatabase();
+        Cursor cursor = MyDB.rawQuery("Select * from User where Username = ?", new String[]{username});
+        if(cursor.getCount() > 0){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    public Boolean checkUsernamePassword(String username, String password){
+        SQLiteDatabase MyDB = this.getWritableDatabase();
+        Cursor cursor = MyDB.rawQuery("Select * from User where Username = ? and Password = ?", new String[]{username, password});
+        if(cursor.getCount() > 0){
+            return true;
+        }
+        else {
+            return false;
+        }}
+
+    public ArrayList<Card> getAllCards(){
+        ArrayList<Card> cards = new ArrayList<>();
+        SQLiteDatabase db = getReadableDatabase();
+        Cursor cursor = db.rawQuery("Select CardId, FontCard ,BackCard from Card", null);
+        cursor.moveToFirst();
+        while (!cursor.isAfterLast()){
+            int cardId = cursor.getInt(0);
+            String fontCard = cursor.getString(1);
+            String backCard = cursor.getString(2);
+            cards.add(new Card(cardId, fontCard, backCard));
+            cursor.moveToNext();
+
+        }
+        cursor.close();
+        return cards;
+
     }
 }

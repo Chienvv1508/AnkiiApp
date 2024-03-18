@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.ContextMenu;
@@ -68,8 +69,13 @@ public class HomePage extends AppCompatActivity {
     @Override
     public boolean onContextItemSelected(@NonNull MenuItem item) {
         if(item.getItemId() == R.id.opThemThe){
+
+
             Toast.makeText(this, "Thêm Thẻ", Toast.LENGTH_SHORT).show();
         }else {
+
+            Intent it = new Intent(HomePage.this, AddFolder.class);
+            startActivity(it);
             Toast.makeText(this, "Thêm Bộ Thẻ", Toast.LENGTH_SHORT).show();
         }
         return  true;

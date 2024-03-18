@@ -8,11 +8,10 @@ android {
 
     defaultConfig {
         applicationId = "com.example.theghinho"
-<<<<<<< HEAD
+
         minSdk = 27
-=======
+
         minSdk = 26
->>>>>>> 2a72e4837399604b934bc57357f94d0bf2b2b860
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
@@ -30,6 +29,7 @@ android {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
     }
+    buildToolsVersion = "34.0.0"
 }
 
 dependencies {

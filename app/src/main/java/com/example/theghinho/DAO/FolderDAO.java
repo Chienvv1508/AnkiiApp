@@ -24,18 +24,18 @@ public class FolderDAO {
     }
 
     @SuppressLint("Range")
-    public List<Folder> getAllFolderById(int id){
+    public List<Folder> getAllFolderById(String username){
         openDataBase();
-        String sql = "Select * from Folder";
-        String idString = "" + id;
-        Cursor c = database.rawQuery(sql, new String[]{idString});
+        String sql = "Select * from Folder where UserName = ? ";
+
+        Cursor c = database.rawQuery(sql, new String[]{username});
         List<Folder> folders = new ArrayList<Folder>();
         if(c.moveToFirst()){
             do{
                 Folder f = new Folder();
                 f.setFolderId(c.getInt(c.getColumnIndex("FolderId")));
                 f.setFolderName(c.getString(c.getColumnIndex("FolderName")));
-                f.setUserId(id);
+               f.setUserName(c.getString(c.getColumnIndex("UserName")));
                 folders.add(f);
 
             }

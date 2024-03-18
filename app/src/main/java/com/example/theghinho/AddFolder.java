@@ -1,5 +1,6 @@
 package com.example.theghinho;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -32,10 +33,12 @@ public class AddFolder extends AppCompatActivity {
     }
 
     private void BtnAddFolderOnClick(View view) {
+        Intent it = getIntent();
+        String userName = it.getStringExtra("userName");
         Folder fol = new Folder();
         String folName = edtFolName.getText().toString();
         fol.setFolderName(folName);
-        folderDAO.insertFolder(fol);
+        folderDAO.insertFolder(fol, userName);
         folderDAO.close();
 
     }

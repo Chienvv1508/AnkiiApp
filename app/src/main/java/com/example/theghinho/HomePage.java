@@ -30,6 +30,7 @@ public class HomePage extends AppCompatActivity {
     private RecyclerView rcv;
 
     List<Folder> folderList;
+    String userName;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,7 +43,7 @@ public class HomePage extends AppCompatActivity {
 
     private void getFolders() {
         FolderDAO folderDAO = new FolderDAO(this);
-    //    folderList = folderDAO.getAllFolderById(1);
+       folderList = folderDAO.getAllFolderById(userName);
     }
 
     private void initListWordView() {
@@ -58,6 +59,7 @@ public class HomePage extends AppCompatActivity {
         btnThemHome = findViewById(R.id.btnThemHomePage);
         registerForContextMenu(btnThemHome);
         rcv = findViewById(R.id.rclBoTheHomePage);
+        userName = getIntent().getStringExtra("UserName");
     }
 
 

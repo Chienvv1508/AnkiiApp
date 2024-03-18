@@ -70,6 +70,7 @@ public class HomePage extends AppCompatActivity {
     @Override
     public boolean onContextItemSelected(@NonNull MenuItem item) {
         if(item.getItemId() == R.id.opThemThe){
+
             if(folderList.size() == 0)
                 Toast.makeText(this, "Bạn chưa có bộ thẻ",Toast.LENGTH_LONG).show();
             else {
@@ -81,7 +82,15 @@ public class HomePage extends AppCompatActivity {
             }
 
 
+
+
+
+            Toast.makeText(this, "Thêm Thẻ", Toast.LENGTH_SHORT).show();
+
         }else {
+
+            Intent it = new Intent(HomePage.this, AddFolder.class);
+            startActivity(it);
             Toast.makeText(this, "Thêm Bộ Thẻ", Toast.LENGTH_SHORT).show();
         }
         return  true;

@@ -49,12 +49,13 @@ public class HomePage extends AppCompatActivity {
         String user = it.getStringExtra("user");
         userName = user;
         folderList = folderDAO.getAllFolderById(user);
-
+        Log.d("sai","o dau");
     }
 
     private void initListWordView() {
         rcv.setAdapter(new FolderListAdapter(folderList,this));
         rcv.setLayoutManager(new LinearLayoutManager(this));
+        Log.d("sai","o dau");
     }
 
     private void bindingAction() {

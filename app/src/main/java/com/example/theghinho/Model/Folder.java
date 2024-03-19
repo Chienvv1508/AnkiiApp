@@ -1,5 +1,7 @@
 package com.example.theghinho.Model;
 
+import androidx.annotation.NonNull;
+
 import java.io.Serializable;
 
 public class Folder implements Serializable {
@@ -36,4 +38,9 @@ public class Folder implements Serializable {
 
     }
 
+    @NonNull
+    @Override
+    public String toString() {
+        return FolderName;
+    }
 }

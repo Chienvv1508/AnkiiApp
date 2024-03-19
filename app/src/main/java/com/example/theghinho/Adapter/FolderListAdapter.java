@@ -35,6 +35,7 @@ public class FolderListAdapter extends RecyclerView.Adapter<FolderItemViewHolder
     @Override
     public FolderItemViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
+
         View itemView = inflater.inflate(R.layout.item_bothe_homepage, parent, false);
         FolderItemViewHolder folder = new FolderItemViewHolder(itemView);
 
@@ -48,9 +49,8 @@ public class FolderListAdapter extends RecyclerView.Adapter<FolderItemViewHolder
        List<Card> lisCard = cardDAO.GetAllCardsByFolderId(f.getFolderId());
        LearningLogDAO learningLogDAO = new LearningLogDAO(context);
        List<LearningLog> learningLogs = learningLogDAO.getAllCardIsNotLearnedInFolder(f.getFolderId());
-       holder.getTxtFolder().setText(f.getFolderName());
-       holder.getTxtTuCanHoc().setText(learningLogs.size());
-       holder.getTxtTongSoTu().setText(lisCard.size());
+       holder.setData(f.getFolderName(),lisCard.size(),learningLogs.size());
+
     }
 
     @Override

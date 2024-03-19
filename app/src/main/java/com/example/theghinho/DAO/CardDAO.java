@@ -7,6 +7,8 @@ import android.database.sqlite.SQLiteDatabase;
 
 import com.example.theghinho.Model.Card;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -44,6 +46,41 @@ public class CardDAO {
            }while (c.moveToFirst());
 
        }
+
        return listCard;
+    }
+
+    public void addCard(Card c){
+        openDataBase();
+        String sql = "Insert into Card(FontCard,BackCard,FolderId) values(?,?,?)";
+        String sql2 = "Insert into LearningLog(CardId,Date,DateLearn,Interval," +
+                "RepeatTime,EF,IsLearning,FolderId) values(?,?,?,?,?,?,?,?)";
+        int cardId = getCardId();
+
+        String folderId = "" + c.getFolderId();
+        database.execSQL(sql,new Object[]{c.getFontCard(),c.getBackCard(),folderId});
+
+        LocalDate date = LocalDate.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        String formattedDate = date.format(formatter);
+
+        String cardId1 = ++cardId + "";
+        database.execSQL(sql2,new Object[]{cardId1,formattedDate,formattedDate,0,0,0,0,folderId});
+
+
+
+    }
+
+    @SuppressLint("Range")
+    private int getCardId() {
+        openDataBase();
+        String sql = "Select CardId from Card Order By CardId DESC";
+        Cursor c = database.rawQuery(sql,new String[]{});
+        int n = -1;
+        if(c.moveToFirst()){
+            n = c.getInt(c.getColumnIndex("CardId"));
+        }
+
+        return n;
     }
 }

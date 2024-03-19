@@ -33,7 +33,7 @@
         android:layout_marginTop="30dp"
         android:ems="10"
         android:inputType="text"
-        android:text="Name"
+        android:hint="Nhập font card"
         app:layout_constraintStart_toStartOf="@+id/spnChonBoThe"
         app:layout_constraintTop_toBottomOf="@+id/spnChonBoThe" />
 
@@ -44,7 +44,7 @@
         android:layout_marginTop="30dp"
         android:ems="10"
         android:inputType="text"
-        android:text="Name"
+        android:hint="Nhập back card"
         app:layout_constraintStart_toStartOf="@+id/edtThemFontCard"
         app:layout_constraintTop_toBottomOf="@+id/edtThemFontCard" />
 

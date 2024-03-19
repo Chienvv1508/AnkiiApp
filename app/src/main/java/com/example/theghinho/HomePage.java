@@ -121,6 +121,16 @@ public class HomePage extends AppCompatActivity {
             Toast.makeText(this, "Duyet The", Toast.LENGTH_SHORT).show();
         } else if(item.getItemId() == R.id.opThongKe){
             Toast.makeText(this, "Thong Ke", Toast.LENGTH_SHORT).show();
+        }else if(item.getItemId() == R.id.opThongTin){
+            Intent it = new Intent(HomePage.this, ProfileEdit.class);
+            it.putExtra("username",userName);
+            startActivity(it);
+            Toast.makeText(this, "Thong Tin", Toast.LENGTH_SHORT).show();
+        }else if(item.getItemId() == R.id.opDoiMatKhau){
+            Intent it = new Intent(HomePage.this, ResetActivity.class);
+            it.putExtra("username",userName);
+            startActivity(it);
+            Toast.makeText(this, "Mat Khau", Toast.LENGTH_SHORT).show();
         }else {
             Toast.makeText(this, "Dang Xuat", Toast.LENGTH_SHORT).show();
 

@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.ContextMenu;
@@ -21,11 +22,13 @@ import com.example.theghinho.Adapter.FolderListAdapter;
 import com.example.theghinho.DAO.FolderDAO;
 import com.example.theghinho.Model.Folder;
 
+import java.io.Serializable;
 import java.util.List;
 
 public class HomePage extends AppCompatActivity {
     Button btnThemHome;
     private RecyclerView rcv;
+    private String userName;
 
     List<Folder> folderList;
     @Override
@@ -40,7 +43,10 @@ public class HomePage extends AppCompatActivity {
 
     private void getFolders() {
         FolderDAO folderDAO = new FolderDAO(this);
-        folderList = folderDAO.getAllFolderById(1);
+        Intent it = getIntent();
+        String user = it.getStringExtra("user");
+        userName = user;
+        folderList = folderDAO.getAllFolderById(user);
     }
 
     private void initListWordView() {
@@ -68,8 +74,28 @@ public class HomePage extends AppCompatActivity {
     @Override
     public boolean onContextItemSelected(@NonNull MenuItem item) {
         if(item.getItemId() == R.id.opThemThe){
+
+            if(folderList.size() == 0)
+                Toast.makeText(this, "Bạn chưa có bộ thẻ",Toast.LENGTH_LONG).show();
+            else {
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("folders", (Serializable) folderList);
+                Intent sendAddCard = new Intent(this,AddCardToFolder.class);
+                sendAddCard.putExtra("folderlist", bundle);
+                startActivity(sendAddCard);
+            }
+
+
+
+
+
             Toast.makeText(this, "Thêm Thẻ", Toast.LENGTH_SHORT).show();
+
         }else {
+
+            Intent it = new Intent(HomePage.this, AddFolder.class);
+            it.putExtra("userName",userName);
+            startActivity(it);
             Toast.makeText(this, "Thêm Bộ Thẻ", Toast.LENGTH_SHORT).show();
         }
         return  true;
@@ -90,6 +116,16 @@ public class HomePage extends AppCompatActivity {
             Toast.makeText(this, "Duyet The", Toast.LENGTH_SHORT).show();
         } else if(item.getItemId() == R.id.opThongKe){
             Toast.makeText(this, "Thong Ke", Toast.LENGTH_SHORT).show();
+        }else if(item.getItemId() == R.id.opThongTin){
+            Intent it = new Intent(HomePage.this, ProfileEdit.class);
+            it.putExtra("username",userName);
+            startActivity(it);
+            Toast.makeText(this, "Thong Tin", Toast.LENGTH_SHORT).show();
+        }else if(item.getItemId() == R.id.opDoiMatKhau){
+            Intent it = new Intent(HomePage.this, ResetActivity.class);
+            it.putExtra("username",userName);
+            startActivity(it);
+            Toast.makeText(this, "Mat Khau", Toast.LENGTH_SHORT).show();
         }else {
             Toast.makeText(this, "Dang Xuat", Toast.LENGTH_SHORT).show();
 

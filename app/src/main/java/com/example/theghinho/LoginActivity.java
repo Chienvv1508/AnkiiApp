@@ -21,7 +21,7 @@ public class LoginActivity extends AppCompatActivity {
     EditText username;
     EditText password;
     Button btnLogin;
-    TextView forgotPass;
+    TextView tvSignUp;
     TheGhiNhoOpenHelper DB;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +32,7 @@ public class LoginActivity extends AppCompatActivity {
         password = (EditText) findViewById(R.id.edtPassword1);
         btnLogin = (Button) findViewById(R.id.btnLogin1);
         DB = new TheGhiNhoOpenHelper(this);
-        forgotPass = (TextView) findViewById(R.id.tvForgotPassword);
+        tvSignUp = (TextView) findViewById(R.id.tvSignUp);
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -46,7 +46,8 @@ public class LoginActivity extends AppCompatActivity {
                     Boolean checkuserpass = DB.checkUsernamePassword(user,pass);
                     if (checkuserpass==true){
                         Toast.makeText(LoginActivity.this, "Login successfully", Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
+                        Intent intent = new Intent(LoginActivity.this , HomePage.class);
+                        intent.putExtra("user",user);
                         startActivity(intent);
                     } else {
                         Toast.makeText(LoginActivity.this, "Invalid Username or Password", Toast.LENGTH_SHORT).show();
@@ -55,10 +56,10 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-        forgotPass.setOnClickListener(new View.OnClickListener() {
+        tvSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), ForgotPassActivity.class);
+                Intent intent = new Intent(getApplicationContext(), Register.class);
                 startActivity(intent);
             }
         });

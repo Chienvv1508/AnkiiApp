@@ -1,6 +1,8 @@
 package com.example.theghinho.Model;
 
-public class Folder {
+import java.io.Serializable;
+
+public class Folder implements Serializable {
     private int FolderId;
     private String FolderName;
 
@@ -20,15 +22,15 @@ public class Folder {
         FolderName = folderName;
     }
 
-    public int getUserId() {
-        return UserId;
+    public String getUserName() {
+        return UserName;
     }
 
-    public void setUserId(int userId) {
-        UserId = userId;
+    public void setUserName(String userName) {
+        UserName = userName;
     }
 
-    private int UserId;
+    private String UserName;
 
     public Folder() {
 

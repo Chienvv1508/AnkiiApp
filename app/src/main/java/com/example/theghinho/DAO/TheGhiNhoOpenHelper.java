@@ -29,8 +29,8 @@ public class TheGhiNhoOpenHelper extends SQLiteOpenHelper {
     private  static final String CREATE_FOLDER = "Create table Folder(\n" +
             "FolderId integer primary key autoincrement,\n" +
             "FolderName text not null,\n" +
-            "UserId integer not null,\n" +
-            "FOREIGN KEY (UserId) REFERENCES User(Id)\n" +
+            "UserName text not null,\n" +
+            "FOREIGN KEY (UserName) REFERENCES User(UserName)\n" +
             ");\n";
     private static final String CREATE_CARD = "Create table Card(\n" +
             "CardId  integer primary key autoincrement,\n" +

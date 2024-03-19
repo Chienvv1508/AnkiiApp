@@ -11,6 +11,7 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -35,12 +36,13 @@ public class LearningLogDAO {
         String sql = "Select * from LearningLog where FolderId = ? and DateLearn = ? and Islearned = ?";
         String folderId = "" + id;
         LocalDate date = LocalDate.now();
-        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-        String formattedDate = dateFormat.format(date);
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        String formattedDate = date.format(formatter);
         String isLearned = "false";
 
         Cursor c = database.rawQuery(sql,new String[]{folderId,formattedDate,isLearned});
         List<LearningLog> lisLearningLog = new ArrayList<LearningLog>();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
         if(c.moveToFirst()){
             do{
                 LearningLog learningLog = new LearningLog();
@@ -49,8 +51,11 @@ public class LearningLogDAO {
 
 
                 try {
-                    Date date1 = dateFormat.parse(c.getString(c.getColumnIndex("Date")));
-                    learningLog.setDate(date1);
+
+                    Date date11 = dateFormat.parse(c.getString(c.getColumnIndex("Date")));
+
+
+                    learningLog.setDate(date11);
                 }  catch (ParseException e) {
                     throw new RuntimeException(e);
                 }

@@ -2,12 +2,14 @@ package com.example.theghinho;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.theghinho.DAO.UserDAO;
 import com.example.theghinho.Model.User;
@@ -26,6 +28,7 @@ public class Register extends AppCompatActivity {
     private TextView txtCheckHo;
     private TextView txtChecTen;
     private  boolean isValid = true;
+    private  Button btnQuayLaiDangNhap;
     private UserDAO userDAO;
 
     @Override
@@ -102,9 +105,26 @@ public class Register extends AppCompatActivity {
                     user.setFName(edtTen.getText().toString());
                     user.setLname(edtHo.getText().toString());
                     userDAO.insertUser(user);
+                    edtUserName.setText("");
+                    edtPass.setText("");
+                   edtCf.setText("");
+                    edtHo.setText("");
+                    edtTen.setText("");
+                    Toast.makeText(getApplicationContext(),"Đăng ký thành công",Toast.LENGTH_LONG).show();
                     userDAO.close();
 
+
                 }
+
+
+            }
+        });
+        btnQuayLaiDangNhap.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(), LoginActivity.class);
+                startActivity(i
+                );
 
 
             }
@@ -123,5 +143,6 @@ public class Register extends AppCompatActivity {
         txtCheckMKcf = findViewById(R.id.txtCheckNhapLai);
         txtCheckHo = findViewById(R.id.txtCheckHo);
         txtChecTen = findViewById(R.id.txtCheckTenR);
+        btnQuayLaiDangNhap = findViewById(R.id.btnBackToLogin);
     }
 }

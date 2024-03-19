@@ -49,8 +49,8 @@ public class FolderListAdapter extends RecyclerView.Adapter<FolderItemViewHolder
        LearningLogDAO learningLogDAO = new LearningLogDAO(context);
        List<LearningLog> learningLogs = learningLogDAO.getAllCardIsNotLearnedInFolder(f.getFolderId());
        holder.getTxtFolder().setText(f.getFolderName());
-       holder.getTxtTuCanHoc().setText(learningLogs.size());
-       holder.getTxtTongSoTu().setText(lisCard.size());
+//       holder.getTxtTuCanHoc().setText(learningLogs.size());
+//       holder.getTxtTongSoTu().setText(lisCard.size());
     }
 
     @Override

@@ -1,11 +1,13 @@
 package com.example.theghinho.DAO;
 
 import android.annotation.SuppressLint;
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import com.example.theghinho.Model.Folder;
+import com.example.theghinho.Model.User;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,23 +26,31 @@ public class FolderDAO {
     }
 
     @SuppressLint("Range")
-    public List<Folder> getAllFolderById(int id){
+    public List<Folder> getAllFolderById(String username){
         openDataBase();
-        String sql = "Select * from Folder";
-        String idString = "" + id;
-        Cursor c = database.rawQuery(sql, new String[]{idString});
+        String sql = "Select * from Folder where UserName = ? ";
+
+        Cursor c = database.rawQuery(sql, new String[]{username});
         List<Folder> folders = new ArrayList<Folder>();
         if(c.moveToFirst()){
             do{
                 Folder f = new Folder();
                 f.setFolderId(c.getInt(c.getColumnIndex("FolderId")));
                 f.setFolderName(c.getString(c.getColumnIndex("FolderName")));
-                f.setUserId(id);
+               f.setUserName(c.getString(c.getColumnIndex("UserName")));
                 folders.add(f);
 
             }
             while(c.moveToNext());
         }
        return  folders;
+    }
+    public long insertFolder(Folder folder, String user) {
+        ContentValues values = new ContentValues();
+        values.put("FolderName",folder.getFolderName());
+        values.put("UserName", user);
+
+        return dbContext.getWritableDatabase().insert("Folder", null, values);
+
     }
 }

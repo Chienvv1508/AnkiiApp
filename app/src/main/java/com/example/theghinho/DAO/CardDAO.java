@@ -43,7 +43,7 @@ public class CardDAO {
                listCard.add(card);
 
 
-           }while (c.moveToFirst());
+           }while (c.moveToNext());
 
        }
 
@@ -54,7 +54,7 @@ public class CardDAO {
         openDataBase();
         String sql = "Insert into Card(FontCard,BackCard,FolderId) values(?,?,?)";
         String sql2 = "Insert into LearningLog(CardId,Date,DateLearn,Interval," +
-                "RepeatTime,EF,IsLearning,FolderId) values(?,?,?,?,?,?,?,?)";
+                "RepeatTime,EF,IsLearned,FolderId) values(?,?,?,?,?,?,?,?)";
         int cardId = getCardId();
 
         String folderId = "" + c.getFolderId();
@@ -82,5 +82,33 @@ public class CardDAO {
         }
 
         return n;
+
+    }
+
+    @SuppressLint("Range")
+    public Card getCardById(int id){
+        openDataBase();
+        String sql = "Select * from Card where CardId = ? ";
+        Card card = new Card();
+
+        Cursor c = database.rawQuery(sql,new String[]{""+id});
+        if(c.moveToFirst()){
+            card.setCardId( c.getInt(c.getColumnIndex("CardId"))) ;
+            card.setFontCard(c.getString(c.getColumnIndex("FontCard")));
+            card.setBackCard(c.getString(c.getColumnIndex("BackCard")));
+            card.setFolderId(c.getInt(c.getColumnIndex("FolderId")));
+
+        }
+        return card;
+    }
+
+    public void deleteCard(int cardId) {
+        openDataBase();
+        String sql = "Delete from LearningLog where CardId = ?";
+        String sql2 = "Delete from Card where CardId = ?";
+        database.execSQL(sql, new Object[]{cardId});
+        database.execSQL(sql2,new Object[]{cardId});
+
+
     }
 }

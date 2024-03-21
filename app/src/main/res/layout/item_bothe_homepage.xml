@@ -41,6 +41,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="55dp"
+        android:layout_marginTop="-10dp"
         android:text="Học"
         app:layout_constraintStart_toEndOf="@+id/txtTuCanHocR"
         app:layout_constraintTop_toTopOf="@+id/txtTuCanHocR" />
@@ -49,11 +50,20 @@
         android:id="@+id/divider"
         android:layout_width="409dp"
         android:layout_height="1dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="80dp"
         android:background="?android:attr/listDivider"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/txtFolderR" />
+
+    <Button
+        android:id="@+id/btnChiTiet"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:text="Chi Tiết"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/btnActionR" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -10,9 +10,13 @@
         android:id="@+id/txtFontLearn"
         android:layout_width="341dp"
         android:layout_height="207dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="30dp"
         android:text="TextView"
-        tools:layout_editor_absoluteX="35dp"
-        tools:layout_editor_absoluteY="37dp" />
+        android:textAlignment="center"
+
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/txtBackLearn"
@@ -20,6 +24,7 @@
         android:layout_height="178dp"
         android:layout_marginTop="50dp"
         android:text="TextView"
+        android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="@+id/txtFontLearn"
         app:layout_constraintStart_toStartOf="@+id/txtFontLearn"
         app:layout_constraintTop_toBottomOf="@+id/txtFontLearn" />
@@ -28,7 +33,7 @@
         android:id="@+id/btnShowDA"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="100dp"
         android:text="Xem Đáp Án"
         app:layout_constraintEnd_toEndOf="@+id/txtBackLearn"
         app:layout_constraintStart_toStartOf="@+id/txtBackLearn"
@@ -38,8 +43,8 @@
         android:id="@+id/btnKho"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="-36dp"
-        android:layout_marginTop="60dp"
+        android:layout_marginStart="-29dp"
+        android:layout_marginTop="50dp"
         android:text="Khó"
         app:layout_constraintStart_toStartOf="@+id/txtBackLearn"
         app:layout_constraintTop_toBottomOf="@+id/btnShowDA" />
@@ -70,4 +75,46 @@
         android:text="Dễ"
         app:layout_constraintStart_toEndOf="@+id/btnVua"
         app:layout_constraintTop_toTopOf="@+id/btnVua" />
+
+    <TextView
+        android:id="@+id/txtKho"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toTopOf="@+id/btnKho"
+        app:layout_constraintStart_toStartOf="@+id/btnKho" />
+
+    <TextView
+        android:id="@+id/txtMoHo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        app:layout_constraintStart_toStartOf="@+id/btnMoHo"
+        app:layout_constraintTop_toTopOf="@+id/txtKho" />
+
+    <TextView
+        android:id="@+id/txtVua"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        app:layout_constraintStart_toStartOf="@+id/btnVua"
+        app:layout_constraintTop_toTopOf="@+id/txtMoHo" />
+
+    <TextView
+        android:id="@+id/txtDe"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        app:layout_constraintStart_toStartOf="@+id/btnDe"
+        app:layout_constraintTop_toTopOf="@+id/txtVua" />
+
+    <Button
+        android:id="@+id/btnGoHomePage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:text="Trang Chủ"
+        app:layout_constraintStart_toEndOf="@+id/btnShowDA"
+        app:layout_constraintTop_toTopOf="@+id/btnShowDA" />
 </androidx.constraintlayout.widget.ConstraintLayout>

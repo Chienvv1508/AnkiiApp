@@ -1,8 +1,9 @@
 package com.example.theghinho.Model;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class LearningLog {
+public class LearningLog implements Serializable {
     private int logId, cardId;
     private Date date;
     private Date dateLearn;

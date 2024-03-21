@@ -54,4 +54,11 @@ public class FolderDAO {
 
     }
 
+    public boolean checkFolderByFoldeNameExisted(String name) {
+        openDataBase();
+        String sql = "select * from Folder where FolderName = ?";
+        Cursor c = database.rawQuery(sql,new String[]{name});
+        return  c.moveToFirst();
+
+    }
 }

@@ -6,6 +6,6 @@ public class CommonValidation {
         if(name.compareTo("") == 0) return false;
 
 
-        return name.matches("[a-zA-Z][a-zA-Z0-9_]+");
+        return name.matches("[a-zA-Z0-9_ ]+");
     }
 }

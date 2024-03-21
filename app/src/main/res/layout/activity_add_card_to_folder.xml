@@ -7,7 +7,7 @@
     tools:context=".AddCardToFolder">
 
     <Spinner
-        android:id="@+id/spinner"
+        android:id="@+id/spnChonBoThe"
         android:layout_width="333dp"
         android:layout_height="43dp"
         android:layout_marginTop="8dp"
@@ -33,9 +33,9 @@
         android:layout_marginTop="30dp"
         android:ems="10"
         android:inputType="text"
-        android:text="Name"
-        app:layout_constraintStart_toStartOf="@+id/spinner"
-        app:layout_constraintTop_toBottomOf="@+id/spinner" />
+        android:hint="Nhập font card"
+        app:layout_constraintStart_toStartOf="@+id/spnChonBoThe"
+        app:layout_constraintTop_toBottomOf="@+id/spnChonBoThe" />
 
     <EditText
         android:id="@+id/edtThemBackCard"
@@ -44,7 +44,7 @@
         android:layout_marginTop="30dp"
         android:ems="10"
         android:inputType="text"
-        android:text="Name"
+        android:hint="Nhập back card"
         app:layout_constraintStart_toStartOf="@+id/edtThemFontCard"
         app:layout_constraintTop_toBottomOf="@+id/edtThemFontCard" />
 
@@ -52,7 +52,8 @@
         android:id="@+id/btnAddCardToFolder"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
         android:text="Thêm Thẻ"
-        tools:layout_editor_absoluteX="254dp"
-        tools:layout_editor_absoluteY="352dp" />
+        app:layout_constraintEnd_toEndOf="@+id/edtThemBackCard"
+        app:layout_constraintTop_toBottomOf="@+id/edtThemBackCard" />
 </androidx.constraintlayout.widget.ConstraintLayout>

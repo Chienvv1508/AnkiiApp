@@ -1,6 +1,8 @@
 package com.example.theghinho.Model;
 
-public class Card {
+import java.io.Serializable;
+
+public class Card implements Serializable {
     private int cardId;
     private String fontCard, backCard;
 

@@ -42,13 +42,17 @@ public class AddFolder extends AppCompatActivity {
     private void BtnAddFolderOnClick(View view) {
         Intent it = getIntent();
         String userName = it.getStringExtra("userName");
-        Intent intent = new Intent(getApplicationContext(), HomePage.class);
-        startActivity(intent);
+        Intent intent = new Intent();
+
         Folder fol = new Folder();
         String folName = edtFolName.getText().toString();
         fol.setFolderName(folName);
         folderDAO.insertFolder(fol, userName);
         folderDAO.close();
+        setResult(200,intent);
+        finish();
+
+
 
     }
 

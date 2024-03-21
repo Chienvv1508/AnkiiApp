@@ -23,11 +23,15 @@ public class FolderListAdapter extends RecyclerView.Adapter<FolderItemViewHolder
 
     List<Folder> folders;
     private Context context;
+    CardDAO cardDAO;
+    LearningLogDAO learningLogDAO;
 
 
     public FolderListAdapter(List<Folder> folder, Context context) {
         this.folders = folder;
         this.context = context;
+
+
 
     }
 
@@ -35,22 +39,34 @@ public class FolderListAdapter extends RecyclerView.Adapter<FolderItemViewHolder
     @Override
     public FolderItemViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
+
         View itemView = inflater.inflate(R.layout.item_bothe_homepage, parent, false);
-        FolderItemViewHolder folder = new FolderItemViewHolder(itemView);
+        FolderItemViewHolder folder = new FolderItemViewHolder(itemView,context);
 
         return folder;
     }
-
+    List<Card> lisCard;
+    List<LearningLog> learningLogs;
     @Override
     public void onBindViewHolder(@NonNull FolderItemViewHolder holder, int position) {
        Folder f = folders.get(position);
-       CardDAO cardDAO = new CardDAO(context);
-       List<Card> lisCard = cardDAO.GetAllCardsByFolderId(f.getFolderId());
-       LearningLogDAO learningLogDAO = new LearningLogDAO(context);
-       List<LearningLog> learningLogs = learningLogDAO.getAllCardIsNotLearnedInFolder(f.getFolderId());
-       holder.getTxtFolder().setText(f.getFolderName());
-//       holder.getTxtTuCanHoc().setText(learningLogs.size());
-//       holder.getTxtTongSoTu().setText(lisCard.size());
+        cardDAO = new CardDAO(context);
+        learningLogDAO = new LearningLogDAO(context);
+
+       lisCard = cardDAO.GetAllCardsByFolderId(f.getFolderId());
+        cardDAO.close();
+
+        learningLogs = learningLogDAO.getAllCardIsNotLearnedInFolder(f.getFolderId());
+
+        learningLogDAO.close();
+        holder.setCacTuCanHoc(learningLogs);
+        holder.setFolder(f);
+        holder.setCards(lisCard);
+
+       holder.setData(f.getFolderName(),lisCard.size(),learningLogs.size());
+
+
+
     }
 
     @Override

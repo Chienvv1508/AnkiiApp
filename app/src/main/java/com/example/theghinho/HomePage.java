@@ -1,6 +1,7 @@
 package com.example.theghinho;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -31,6 +32,7 @@ public class HomePage extends AppCompatActivity {
     private String userName;
 
     List<Folder> folderList;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,15 +45,17 @@ public class HomePage extends AppCompatActivity {
 
     private void getFolders() {
         FolderDAO folderDAO = new FolderDAO(this);
-        Intent it = getIntent();
-        String user = it.getStringExtra("user");
-        userName = user;
-        folderList = folderDAO.getAllFolderById(user);
+
+
+        folderList = folderDAO.getAllFolderById(userName);
+        folderDAO.close();
+        Log.d("sai","o dau");
     }
 
     private void initListWordView() {
         rcv.setAdapter(new FolderListAdapter(folderList,this));
         rcv.setLayoutManager(new LinearLayoutManager(this));
+        Log.d("sai","o dau");
     }
 
     private void bindingAction() {
@@ -62,6 +66,7 @@ public class HomePage extends AppCompatActivity {
         btnThemHome = findViewById(R.id.btnThemHomePage);
         registerForContextMenu(btnThemHome);
         rcv = findViewById(R.id.rclBoTheHomePage);
+        userName = getIntent().getStringExtra("user");
     }
 
 
@@ -95,10 +100,19 @@ public class HomePage extends AppCompatActivity {
 
             Intent it = new Intent(HomePage.this, AddFolder.class);
             it.putExtra("userName",userName);
-            startActivity(it);
-            Toast.makeText(this, "Thêm Bộ Thẻ", Toast.LENGTH_SHORT).show();
+            startActivityForResult(it,200);
+
         }
         return  true;
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(resultCode == 200 && resultCode == 200){
+            getFolders();
+            initListWordView();
+        }
     }
 
     @Override
@@ -135,5 +149,12 @@ public class HomePage extends AppCompatActivity {
 
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        getFolders();
+        initListWordView();
     }
 }

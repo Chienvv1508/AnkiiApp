@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 
 import com.example.theghinho.Model.LearningLog;
 
@@ -38,7 +39,7 @@ public class LearningLogDAO {
         LocalDate date = LocalDate.now();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         String formattedDate = date.format(formatter);
-        String isLearned = "false";
+        String isLearned = "0";
 
         Cursor c = database.rawQuery(sql,new String[]{folderId,formattedDate,isLearned});
         List<LearningLog> lisLearningLog = new ArrayList<LearningLog>();
@@ -79,6 +80,37 @@ public class LearningLogDAO {
             while (c.moveToNext());
         }
         return lisLearningLog;
+
+    }
+
+    public void updateIsLearned(int logId) {
+        openDataBase();
+        String sql = "Update LearningLog set IsLearned = ? where LogId = ?";
+        database.execSQL(sql,new Object[]{"1",""+logId});
+    }
+
+    @SuppressLint("Range")
+    public LearningLog addNewLearningLog(LearningLog log) {
+        openDataBase();
+        String sql2 = "Insert into LearningLog(CardId,Date,DateLearn,Interval," +
+                "RepeatTime,EF,IsLearned,FolderId) values(?,?,?,?,?,?,?,?)";
+        String sql = "select LogId from LearningLog order by LogId desc ";
+
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+
+
+
+
+
+        database.execSQL(sql2,new Object[]{log.getCardId(),dateFormat.format(log.getDate()),dateFormat.format(log.getDateLearn()),log.getInterval()
+        ,log.getRepeatTime(),log.getEf(),0,log.getFolderId()});
+        Cursor c= database.rawQuery(sql,new String[]{});
+        LearningLog log1 = log;
+        if(c.moveToFirst()){
+            log1.setLogId(c.getInt(c.getColumnIndex("LogId")));
+        }
+        return log1;
+
 
     }
 }

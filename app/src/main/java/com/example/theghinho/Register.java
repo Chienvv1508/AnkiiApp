@@ -45,6 +45,7 @@ public class Register extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 userDAO.openDataBase();
+                isValid = true;
                 if(!ValidationUser.validateUsername(edtUserName.getText().toString())|| userDAO.isUserNameExisted(edtUserName.getText().toString())){
                     isValid = false;
                     txtCheckTk.setText("Tài khoản không hợp lệ");
@@ -52,7 +53,7 @@ public class Register extends AppCompatActivity {
                     txtCheckTk.setVisibility(View.VISIBLE);
                 }else {
                     txtCheckTk.setText("");
-                    isValid = true;
+
                 }
                 if(!ValidationUser.validatePass(edtPass.getText().toString())){
                     isValid = false;
@@ -61,7 +62,7 @@ public class Register extends AppCompatActivity {
                     txtCheckMk.setVisibility(View.VISIBLE);
                 }else {
                     txtCheckMk.setText("");
-                    isValid = true;
+
                     if(edtCf.getText().toString().isEmpty()){
                         isValid = false;
                         txtCheckMKcf.setText("Yêu cầu nhập lại mật khẩu");
@@ -75,7 +76,7 @@ public class Register extends AppCompatActivity {
                             txtCheckMKcf.setVisibility(View.VISIBLE);
                         }else {
                             txtCheckMKcf.setText("");
-                            isValid = true;
+
 
                         }
 
@@ -88,7 +89,7 @@ public class Register extends AppCompatActivity {
                     txtCheckHo.setVisibility(View.VISIBLE);
                 }else {
                     txtCheckHo.setText("");
-                    isValid = true;}
+                    }
                 if(!ValidationUser.validateName(edtTen.getText().toString())){
                     isValid = false;
                     txtChecTen.setText("Họ không hợp lệ");
@@ -96,7 +97,7 @@ public class Register extends AppCompatActivity {
                     txtChecTen.setVisibility(View.VISIBLE);
                 }else {
                     txtChecTen.setText("");
-                    isValid = true;}
+                    }
 
                 if(isValid){
                     User user = new User();

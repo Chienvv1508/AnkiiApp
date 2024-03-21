@@ -2,6 +2,7 @@ package com.example.theghinho;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -15,6 +16,8 @@ import android.widget.Toast;
 import com.example.theghinho.DAO.CardDAO;
 import com.example.theghinho.Model.Card;
 import com.example.theghinho.Model.Folder;
+import com.example.theghinho.Validation.CardValidation;
+
 
 import java.util.List;
 
@@ -58,9 +61,23 @@ public class AddCardToFolder extends AppCompatActivity {
                 c.setFontCard(edtThemFontCard.getText().toString());
                 c.setBackCard(edtThemBackCard.getText().toString());
                 c.setFolderId(folderId);
-                CardDAO cardDAO = new CardDAO(getApplicationContext());
-                cardDAO.addCard(c);
-                Toast.makeText(getApplicationContext(),"Thêm Thẻ Thành Công",Toast.LENGTH_LONG).show();
+                CardValidation.context = getApplicationContext();
+                
+                if(!CardValidation.validateName(c.getFontCard())){
+                   Toast.makeText(getApplicationContext(),"Tên sai định dạng",Toast.LENGTH_SHORT).show();
+
+                } else if (CardValidation.checkExistedCard(c.getFontCard())) {
+                    Toast.makeText(getApplicationContext(),"Tên đã tồn tại",Toast.LENGTH_SHORT).show();
+
+                }else {
+                    Intent intent = new Intent();
+                    CardDAO cardDAO = new CardDAO(getApplicationContext());
+                    cardDAO.addCard(c);
+                    Toast.makeText(getApplicationContext(),"Thêm Thẻ Thành Công",Toast.LENGTH_LONG).show();
+                    setResult(200,intent);
+                    finish();
+                }
+
             }
         });
     }

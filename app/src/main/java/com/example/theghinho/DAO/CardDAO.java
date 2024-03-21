@@ -111,4 +111,11 @@ public class CardDAO {
 
 
     }
+
+    public boolean checkCardExisted(String name) {
+        openDataBase();
+        String sql = "select * from Card where FontCard = ?";
+        Cursor c = database.rawQuery(sql,new String[]{name});
+        return  c.moveToFirst();
+    }
 }

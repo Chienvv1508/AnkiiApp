@@ -5,14 +5,14 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.theghinho.DAO.FolderDAO;
-import com.example.theghinho.DAO.UserDAO;
+import com.example.theghinho.Validation.FolderValidation;
 import com.example.theghinho.Model.Folder;
-import com.example.theghinho.Model.User;
 
 public class AddFolder extends AppCompatActivity {
     private EditText edtFolName;
@@ -47,10 +47,20 @@ public class AddFolder extends AppCompatActivity {
         Folder fol = new Folder();
         String folName = edtFolName.getText().toString();
         fol.setFolderName(folName);
-        folderDAO.insertFolder(fol, userName);
-        folderDAO.close();
-        setResult(200,intent);
-        finish();
+        FolderValidation.setContext(getApplicationContext());
+        if(!FolderValidation.validateName(folName)){
+            Toast.makeText(this,"Tên sai định dạng",Toast.LENGTH_SHORT).show();
+
+        } else if (FolderValidation.checkExistedFolder(folName)) {
+            Toast.makeText(this,"Tên đã tồn tại",Toast.LENGTH_SHORT).show();
+
+        }else {
+            folderDAO.insertFolder(fol, userName);
+            folderDAO.close();
+            setResult(200,intent);
+            finish();
+        }
+
 
 
 
